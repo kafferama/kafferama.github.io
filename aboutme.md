@@ -2,15 +2,12 @@
 layout: page
 title: About me
 subtitle: Why you'd want to go on a date with me
+published: true
 ---
+## Juan Felipe Rodriguez
 
-My name is Inigo Montoya. I have the following qualities:
+My name is Juan Felipe Rodriguez. I am a mechanical engineer graduated from EAFIT University in Medellin, Colombia. I am currently doing my master at the same University in the field of Visual-SLAM. My main topics of interest are: computational mechanics, CFD, artificial intelligence methods applied to engineering problems and computational methods in general.
 
-- I rock a great mustache
-- I'm extremely loyal to my family
+I created this blog with the purpose of sharing things I've looked for online and haven't found in a simple manner besides of some personal projects.
+If you want to contact me feel free to do so at jfrvk1@gmail.com, feedback is greatly appreciated.
 
-What else do you need?
-
-### my history
-
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](http://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
