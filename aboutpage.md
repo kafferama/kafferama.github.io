@@ -6,4 +6,4 @@ published: true
 ---
 ## Kafferama
 
-The name Kafferama comes from joining the german word ford coffee **Kaffee** with the suffix **-rama**. The 
+The name Kafferama comes from joining the german word ford coffee **Kaffee** with the suffix **-rama**. The word **Kaffee** was chosen because of the
