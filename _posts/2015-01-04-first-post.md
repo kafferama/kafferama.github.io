@@ -1,7 +1,9 @@
 ---
 layout: post
-title: First post!
-image: /img/hello_world.jpeg
+title: Numpy's einsum in convolutions
 ---
 
-This is my first post, how exciting!
+[//]: #image: /img/hello_world.jpeg
+
+
+
