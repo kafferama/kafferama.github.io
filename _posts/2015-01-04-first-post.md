@@ -14,7 +14,7 @@ Part of the assignment is to also test the speedup gained by usign their functio
 
 At first I had to fully understand how convolutions (in a machine learning sense) worked and what they meant. In this Paul-Louis Pröve's [blog post](https://towardsdatascience.com/types-of-convolutions-in-deep-learning-717013397f4d) helped me a lot with it's great visualizations, but they were not enough to get me to understand how to code it. It was finally the aforementioned course's [notes](http://cs231n.github.io/convolutional-networks/) which made it clear for me through a great interactive animation of the process.
 
-Convolution, in practice, takes a 4-D \\( w_{pjkl} \\) tensor (as in multidimensional array) and slides it across another 4-D tensor \\( x_{ijkl} \\) to produce a set of filtered images. In \\( w_{pjkl} \\), \\( p
+Convolution, in practice, takes a 4-D \\( w \\) tensor (as in multidimensional array) and slides it across another 4-D tensor \\( x \\) to produce a set of filtered images. \\( w \\) is of shape \\( (N, C, H, W) \\)
 
 
 
