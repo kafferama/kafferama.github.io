@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Numpy's einsum for convolutions
-published: false
 date: '2019-03-09'
 mathjax: true
 ---
