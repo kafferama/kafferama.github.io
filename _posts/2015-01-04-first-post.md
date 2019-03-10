@@ -47,9 +47,21 @@ For this solution, I began thinking of the problem for just one image with one f
 	Hp = 1 + (H + 2 * pad - HH) / stride
     Wp = 1 + (W + 2 * pad - WW) / stride
 
-For this I would have to element-wise multiply the filter weights with the part of the image I'm looking at,  do this for all the channels and sum everything up. This would give me the first entry of the filtered image. The only two things left are to look at different parts of the image taking into account the stride parameter and upscaling it to all the filters and all the images in the minibatch. Luckily for us this is as easy as it could be thanks to einsum.
+For this I would have to element-wise multiply the filter weights with the part of the image I'm looking at,  do this for every channel and sum everything up. This would give me the first entry of the filtered image. The only two things left are to look at different parts of the image taking into account the stride parameter and upscaling it to all the filters and all the images in the minibatch. Luckily for us this is as easy as it could be thanks to einsum.
 
-To formalize everything I just said, let us summarize the operations we just recognized: `dot` product between the weight and the part of the image we're looking at, together with a sum over the channels of the image. We will name the axes of the \\(x\\) minibatch input of shape \\((N, C, H, W)\\) with the letters `ijkl`, this selection is arbitrary and just uses common indexes, which leaves us with \\( x_{ijkl} \\). As we're operating it with \\(w\\) of shape \\( (F, C, HH, WW) \\) we will name it next, but taking into account the operations. First of all we look at multiplications, so 
+To formalize everything I just said, let us summarize the operations we just recognized: `dot` product between the weight and the part of the image we're looking at, together with another `dot` product over the channels of the image. We will name the axes of the \\(x\\) minibatch input of shape \\((N, C, H, W)\\) with the letters `ijkl`, this selection is arbitrary and just uses common indexes, which leaves us with \\( x_{ijkl} \\). As we're operating it with \\(w\\) of shape \\( (F, C, HH, WW) \\) we will name it next, but taking into account the operations. 
+
+First of all, we look at multiplications. We want the last two axes (which correspond to weights and pixels) to multiply with each other so we name the last to axes of \\(w\\) accordingly (\\(w_{,,kl}\\)). Every filter has got a weight matrix for every channel so we want to multiply for each channel, giving us \\(w_{,jkl}\\) in accordance with \\(x\\). Lastly, we don't want the dimension of the different filters to be affected, so we want a separate index for it, leaving us with \\(w_{pjkl}\\). (Again the p was chosen randomly).
+
+Second of all, we look at summation. For the letters after the arrow we want summation to occur on the last three axes of our arrays. Which leaves us with `ip`, an array of shape \\((N, F)\\). Note how this makes the operation happen independently for all the filters in the layer and all the images in the minibatch.
+
+### To recap
+
+We had an array of shape \\((N, C, H, W)\\) and another one with shape \\( (F, C, HH, WW) \\), we wanted an array of shape \\((N, F, 1, 1)\\) (we are making one pixel of the output at a time). We named everything accordingly leaving us with `ijkl,pjkl->ip`, i.e.:
+
+| \\((N, C, H, W)\\) | \\( (F, C, HH, WW) \\) | \\((N, F, 1, 1)\\) |
+|--------------------|------------------------|--------------------|
+| `ijkl,`            | `pjkl->`               | `ip`               |
 
 
 
