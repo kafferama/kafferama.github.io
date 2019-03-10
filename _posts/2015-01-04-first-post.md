@@ -65,7 +65,38 @@ We had an array of shape \\((N, C, H, W)\\) and another one with shape \\( (F, C
 
 ## Code
 
-Putting it all together 
+Putting it all together we will get to:
+
+{% highlight python %} 
+
+for a in range(Wp):
+	for b in range(Hp):
+    	out[...,a,b] = np.einsum('ijkl,pjkl->ip',x[..,b*stride:b*stride+HH,b*stride:b*stride+WW], w)
+
+out+= b[np.newaxis, ..., np.newaxis, np.newaxis] 
+    
+{% endhighlight %}
+
+Where the two for loops are for sliding on both our output and input images with a step of size `stride`. Notice that at the end we reshape our bias term \\(b \\) of shape \\( (F,) \\) in order to be able to add it to every channel in the filter axis.
+
+
+## Performance
+
+At the beginning of this post I mentioned how the assignment gave tools to compare your own solution with theirs. Most of the people that were doing the assignment with me saw a boost of \\( ~400x \\) with respect to their code, my solution above had a boost of perfomance of around \\( ~3x \\), which made it more than a hundred times faster than most of the "naive" implementations my partners came up with. 
+
+It is worth mentioning that the fast solution the course gives you makes use of `np.as_strided`, a function that is also used and very well explained by Jessica's post. I did not want to get into that for this assignment.
+
+## It gets better
+
+To make things even better, `np.einsum` comes with an optimizer attached to it. The optimizer tries to find the optimal sequence of operations in order to perform the sums and multiplications in the best order possible. The way it works is quite well explained in the [documentation](https://docs.scipy.org/doc/numpy/reference/generated/numpy.einsum.html). Adding the `optimize = 'greedy'` option made my code only two times slower than the code they came up at Stanford's code.
+
+## Note
+
+As a final note I would like to 
+
+
+
+
 
 
 
