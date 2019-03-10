@@ -38,7 +38,18 @@ Note that the naming of axes is divided by a comma (or multiple commas for more 
 2. Omiting a letter in the final part (after the arrow) means to sum over that axis.
 3. The letters after the arrow can have any order, so transposing is possible over any pair of axes.
 
+Jessica's post goes over this same explanaition (and for the same application!) probably a lot better, but sadly she did not go too deep into how to name the axes for the task at hand. Which brings us to our way of solving it.
 
+## Our solution
+
+For this solution, I began thinking of the problem for just one image with one filter before scaling it to the whole minibatch (which is quite straight-forward). For one \\( Wp \\) by \\( Hp \\) image I wanted to produce a \\( Wp \\) by \\( Hp \\) filtered image, where Hp and Wp are given by:
+
+	Hp = 1 + (H + 2 * pad - HH) / stride
+    Wp = 1 + (W + 2 * pad - WW) / stride
+
+For this I would have to element-wise multiply the filter weights with the part of the image I'm looking at,  do this for all the channels and sum everything up. This would give me the first entry of the filtered image. The only two things left are to look at different parts of the image taking into account the stride parameter and upscaling it to all the filters and all the images in the minibatch. Luckily for us this is as easy as it could be thanks to einsum.
+
+To formalize everything I just said, let us summarize the operations we just recognized: `dot` product between the weight and the part of the image we're looking at, together with a sum over the channels of the image. We will name the axes of the \\(x\\) minibatch input of shape \\((N, C, H, W)\\) with the letters `ijkl`, this selection is arbitrary and just uses common indexes, which leaves us with \\( x_{ijkl} \\). As we're operating it with \\(w\\) of shape \\( (F, C, HH, WW) \\) we will name it next, but taking into account the operations. First of all we look at multiplications, so 
 
 
 
