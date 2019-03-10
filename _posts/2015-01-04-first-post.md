@@ -63,6 +63,10 @@ We had an array of shape \\((N, C, H, W)\\) and another one with shape \\( (F, C
 |--------------------|------------------------|--------------------|
 | `ijkl,`            | `pjkl->`               | `ip`               |
 
+## Code
+
+Putting it all together 
+
 
 
 
