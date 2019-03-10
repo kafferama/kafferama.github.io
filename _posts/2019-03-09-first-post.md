@@ -4,9 +4,6 @@ title: Numpy's einsum for convolutions
 date: '2019-03-09'
 mathjax: true
 ---
-
-[//]: # image: /img/hello_world.jpeg
-
 In the past few days, I've been doing the second assignment of Stanford's [CS231n](http://cs231n.stanford.edu/) course on convolutional neural networks. In it, the forward (and backward) passes of a convolutional layer needed to be implemented in a "naive" way, as they provide you with a faster implementation already.
 
 > If you're trying to this by yourself try and do it before reading this post, I give my answer to the problem at the end.
