@@ -67,13 +67,11 @@ We had an array of shape \\((N, C, H, W)\\) and another one with shape \\( (F, C
 Putting it all together we will get to:
 
 {% highlight python %} 
-
 for a in range(Wp):
     for b in range(Hp):
         out[...,a,b] = np.einsum('ijkl,pjkl->ip',x[..,b*stride:b*stride+HH,b*stride:b*stride+WW], w)
 
-out+= b[np.newaxis, ..., np.newaxis, np.newaxis] 
-    
+out+= b[np.newaxis, ..., np.newaxis, np.newaxis]  
 {% endhighlight %}
 
 Where the two for loops are for sliding on both our output and input images with a step of size `stride`. Notice that at the end we reshape our bias term \\(b \\) of shape \\( (F,) \\) in order to be able to add it to every channel in the filter axis.
