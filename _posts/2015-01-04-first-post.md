@@ -28,13 +28,17 @@ Even though I had encountered the function before, the [documentation](https://d
 
 From Alex's post we can see that the function takes a string that states what we want to do and applies it to the input tensor we give it(` np.einsum('einsum string',tensors)`). An `einsum string` for  element-wise multiplication for two tensors A and B looks like this: `ij,ij->ij`. From this we can decompose the string into three parts:
 
-- The first part names the axes of our A tensor.
-- The second part names the axes of our B tensor.
-- The last part says which axes we want to keep.
+1. The first part names the axes of our A tensor.
+2. The second part names the axes of our B tensor.
+3. The last part says which axes we want to keep.
 
 Note that the naming of axes is divided by a comma (or multiple commas for more than two tensors), the naming part and the resulting tensor part are divided by a `->` (which can be omitted, but for me its easier if you keep track of everything, see Alex's post for more on that) and the naming has a certain logic to it. This logic is dictated by three simple rules:
 
-Repeating an axis letter in the first part (before the arrow) 
+1. Repeating a letter in the first part (before the arrow) means to multiply over that axis.
+2. Omiting a letter in the final part (after the arrow) means to sum over that axis.
+3. The letters after the arrow can have any order, so transposing is possible over any pair of axes.
+
+
 
 
 
