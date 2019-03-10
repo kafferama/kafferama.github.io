@@ -24,9 +24,9 @@ Convolution, in practice, takes a 4-D \\( w \\) tensor (as in multidimensional a
 
 For my implementation to be fast, I wanted to do most of the work on `numpy`, meaning I had to avoid Python's loops as much as I could. Because of this, the idea of using a function I had seen before and had never dared to use came to my mind. The function was of course `np.einsum`, a function with the ability to operate on multiple dimensions of a multidimensional array with one function call, transferring all the hard work to  `numpy` and saving (potentially) a lot of time.
 
-Even though I had encountered the function before, the [documentation]https://docs.scipy.org/doc/numpy/reference/generated/numpy.einsum.html) for it leaves a lot to be desired so I never had a clue on how to use it (but understood what it did). Because of this, I had to look into other sources and I gladly found [this explaination](http://ajcr.net/Basic-guide-to-einsum/) for it by Alex Riley, together with [this great blog post](http://jessicastringham.net/2018/01/01/einsum.html) by Jessica Stringham.
+Even though I had encountered the function before, the [documentation](https://docs.scipy.org/doc/numpy/reference/generated/numpy.einsum.html) for it leaves a lot to be desired, so I never had a clue on how to use it (but understood what it did). Because of this, I had to look into other sources and I gladly found [this explaination](http://ajcr.net/Basic-guide-to-einsum/) for it by Alex Riley, together with [this great blog post](http://jessicastringham.net/2018/01/01/einsum.html) by Jessica Stringham.
 
-From Alex's post it
+From Alex's post we can see that the function takes a (kind of scary) string that states what we want to do and applies it with the
 
 
 
