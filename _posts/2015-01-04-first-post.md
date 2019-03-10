@@ -88,7 +88,7 @@ It is worth mentioning that the fast solution the course gives you makes use of 
 
 ## It gets better
 
-To make things even better, `np.einsum` comes with an optimizer attached to it. The optimizer tries to find the optimal sequence of operations in order to perform the sums and multiplications in the best order possible. The way it works is quite well explained in the [documentation](https://docs.scipy.org/doc/numpy/reference/generated/numpy.einsum.html). Adding the `optimize = 'greedy'` option made my code only two times slower than the code they came up at Stanford's code.
+To make things even better, `np.einsum` comes with an optimizer attached to it. The optimizer tries to find the optimal sequence of operations in order to perform the sums and multiplications in the best order possible. The way it works is quite well explained in the [documentation](https://docs.scipy.org/doc/numpy/reference/generated/numpy.einsum.html). Adding the `optimize = 'greedy'` option made my code only two times slower than the code they came up at Stanford's code, which is an improvement of 30% just by adding an option.
 
 ## Note
 
