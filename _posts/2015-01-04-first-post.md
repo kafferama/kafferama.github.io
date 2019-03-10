@@ -92,7 +92,15 @@ To make things even better, `np.einsum` comes with an optimizer attached to it. 
 
 ## Note
 
-As a final note I would like to 
+As a final note I would like to mention that even though the function is called `einsum` and it refers to Einstein's notation, the Einstein notation found in tensor calculus (not multidimensional arrays, but things with actual physical meaning) when an index is repeated it means that summation occurs over that axis and in the result you don't have that dimension anymore, when being thorough the index has to be repeated in a certain way. Overall, `einsum` provides you with even more control than Einstein summation convention would, but comming from a physics background it is confusing when they behave differently having the same name. In a similar way calling a multidimensional array a tensor is.
+
+## More resources
+
+Appart from the ones already in the post, you can check:
+
+- [Great post](https://rockt.github.io/2018/04/30/einsum) by Tim Rocktäschel that also icludes `einsum` in Tensorflow and PyTorch.
+- [Another take](https://obilaniu6266h16.wordpress.com/2016/02/04/einstein-summation-in-numpy/) on it by Olexa Bilaniuk which may be easier to get from a CS perspective. It also has a lot of great examples on different operations.
+- [Jessica's post](http://jessicastringham.net/2017/12/31/stride-tricks.html) on using strides if you want to know more about that. 
 
 
 
