@@ -41,7 +41,7 @@ Jessica's post goes over this same explanation (and for the same application!) p
 
 ## Our solution
 
-For this solution, I began thinking of the problem for just one image with one filter before scaling it to the whole minibatch (which is quite straight-forward). For one \\( Wp \\) by \\( Hp \\) image I wanted to produce a \\( Wp \\) by \\( Hp \\) filtered image, where Hp and Wp are given by:
+For this solution, I began thinking of the problem for just one image with one filter before scaling it to the whole minibatch (which is quite straight-forward). For one \\( Wp \\) by \\( Hp \\) image I wanted to produce a \\( Wp \\) by \\( Hp \\) filtered image, where \\(Hp\\) and \\(Wp\\) are given by:
 
     Hp = 1 + (H + 2 * pad - HH) / stride
     Wp = 1 + (W + 2 * pad - WW) / stride
